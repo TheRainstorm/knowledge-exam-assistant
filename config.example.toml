@@ -1,0 +1,41 @@
+# Paths are relative to this config file; copy to config.toml before editing.
+data_dir = "./data"
+
+[ingest]
+sample_seconds = 5.0
+frame_change_threshold = 6.0
+ocr = false
+transcribe = false
+asr_model = "small"
+asr_language = "zh"
+# CPU/int8 works independently of CUDA/ROCm. faster-whisper GPU is NVIDIA only.
+asr_device = "cpu"
+asr_compute_type = "int8"
+# Normalized [left, top, right, bottom]; controls slide comparison only.
+compare_roi = [0.0, 0.0, 1.0, 1.0]
+pdf_dpi = 120
+
+[embedding]
+# none: lexical only; text: text semantic + OCR; wemm: image and text semantic.
+backend = "none"
+model = "BAAI/bge-small-zh-v1.5"
+revision = "main"
+device = "cpu"
+# WeMM: use a downloaded LOCAL snapshot path and its exact Git revision.
+# backend = "wemm"
+# model = "./models/wemm-2b"
+# revision = "bbd6cd4bf52cfc6716f752a2df80b2706720bd95"
+# device = "cuda"
+
+[quiz]
+# Must accept image_url data URLs and return structured JSON in chat completions.
+endpoint = "http://127.0.0.1:8000/v1/chat/completions"
+model = "your-vision-model"
+api_key_env = "KEXAM_API_KEY"
+# Some providers require an extension: thinking = "disabled"
+default_concurrency = 3
+max_model_requests = 8
+
+[web]
+port = 8765
+# Loopback binding is intentional. Use SSH forwarding for remote access.

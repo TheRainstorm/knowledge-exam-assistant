@@ -1,0 +1,8 @@
+{
+  "notice": "Synthetic fixtures for evaluation only. Labels must never be sent to the answering model or indexed as evidence.",
+  "cases": [
+    {"stem": "星港实验室设备借用的正确流程是什么？", "type": "single", "options": [{"label":"A","text":"提交申请、负责人批准、领取设备、使用后归还"},{"label":"B","text":"领取设备、提交申请、负责人批准、使用后归还"}], "expected": ["A"]},
+    {"stem":"归还借用设备时需要交回哪些物品？", "type":"multiple", "options":[{"label":"A","text":"设备"},{"label":"B","text":"电源适配器"},{"label":"C","text":"个人手机"}], "expected":["A","B"]},
+    {"stem":"星梭一号探测器是否配备激光雷达？", "type":"single", "options":[{"label":"A","text":"配备"},{"label":"B","text":"不配备"}], "expected":["B"]}
+  ]
+}

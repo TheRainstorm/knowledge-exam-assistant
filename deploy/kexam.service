@@ -1,0 +1,17 @@
+[Unit]
+Description=Knowledge Exam Assistant (user service)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/knowledge-exam-assistant
+EnvironmentFile=-%h/knowledge-exam-assistant/.env
+Environment=PYTHONUNBUFFERED=1
+Environment=TOKENIZERS_PARALLELISM=false
+ExecStart=%h/knowledge-exam-assistant/.venv/bin/kexam --config %h/knowledge-exam-assistant/config.toml serve
+Restart=on-failure
+RestartSec=10
+UMask=0077
+
+[Install]
+WantedBy=default.target
